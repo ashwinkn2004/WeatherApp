@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String cityName = 'ERNAKULAM';
+  String cityName = 'PATHANAMTHITTA';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      drawer: Drawer(),
       body: Column(
         children: [
           Container(
