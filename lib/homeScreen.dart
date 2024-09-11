@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String cityName = 'PATHANAMTHITTA';
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,129 +81,137 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverPersistentHeader(
             pinned: true,
             delegate: _SliverAppBarDelegate(
-              minHeight: 180.0, // Min height when pinned
-              maxHeight: 180.0, // Max height when not pinned
+              minHeight: 196.0, // Min height when pinned
+              maxHeight: 200.0, // Max height when not pinned
               child: Container(
                 color: Colors.black,
-                child: Row(
+                child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Container(
-                        width: 140,
-                        height: 140,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Center(
-                          child: Column(
-                            children: [
-                              const SizedBox(height: 25),
-                              Text(
-                                "25°",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.black,
-                                  fontSize: 55,
-                                  fontWeight: FontWeight.w200,
-                                ),
-                              ),
-                              Row(
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Container(
+                            width: 140,
+                            height: 140,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Column(
                                 children: [
-                                  const SizedBox(width: 39),
+                                  const SizedBox(height: 25),
                                   Text(
-                                    "H : 28",
+                                    "25°",
                                     style: GoogleFonts.poppins(
                                       color: Colors.black,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w300,
+                                      fontSize: 55,
+                                      fontWeight: FontWeight.w200,
                                     ),
                                   ),
-                                  const SizedBox(width: 5),
-                                  Text(
-                                    "L : 24",
-                                    style: GoogleFonts.raleway(
-                                      color: Colors.black,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w300,
-                                    ),
+                                  Row(
+                                    children: [
+                                      const SizedBox(width: 39),
+                                      Text(
+                                        "H : 28",
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.black,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        "L : 24",
+                                        style: GoogleFonts.raleway(
+                                          color: Colors.black,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .1,
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          width: 140,
-                          height: 65,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[800],
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "AIR QUALITY 22",
-                                  style: GoogleFonts.raleway(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                                Text(
-                                  "Fair",
-                                  style: GoogleFonts.raleway(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ],
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        Container(
-                          width: 140,
-                          height: 65,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "UV INDEX 00",
-                                  style: GoogleFonts.raleway(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                  ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * .1,
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              width: 140,
+                              height: 65,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[800],
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "AIR QUALITY 22",
+                                      style: GoogleFonts.raleway(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Fair",
+                                      style: GoogleFonts.raleway(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  "Low",
-                                  style: GoogleFonts.raleway(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
+                            const SizedBox(height: 10),
+                            Container(
+                              width: 140,
+                              height: 65,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "UV INDEX 00",
+                                      style: GoogleFonts.raleway(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Low",
+                                      style: GoogleFonts.raleway(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .85,
+                      child: const Divider(),
                     ),
                   ],
                 ),
@@ -214,10 +222,10 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                SizedBox(
+                /*SizedBox(
                   width: MediaQuery.of(context).size.width * .85,
                   child: const Divider(),
-                ),
+                ),*/
                 Container(
                   height: 80,
                   width: MediaQuery.of(context).size.width * .85,
@@ -343,6 +351,62 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .25,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.height * .04,
+                    ),
+                    Container(
+                      height: 150,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[800],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                        child: Text('SUNSET / RISE TIME WITH IMAGE',
+                            style: GoogleFonts.raleway(
+                              color: Colors.white,
+                              fontSize: 20,
+                            )),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.height * .04,
+                    ),
+                    Container(
+                      height: 150,
+                      width: 150,
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'FEELS LIKE',
+                            style: GoogleFonts.raleway(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                          Text(
+                            "25°",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 60,
+                              fontWeight: FontWeight.w200,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
@@ -370,7 +434,8 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => maxHeight;
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return SizedBox.expand(child: child);
   }
 
