@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_v2/services/weather_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +11,38 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String cityName = 'PATHANAMTHITTA';
+  final WeatherService weatherService = WeatherService();
+  Map<String, dynamic>? weatherData;
+  Map<String, dynamic>? airQualityData;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchWeatherData();
+  }
+
+  Future<void> fetchWeatherData() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      String locationKey = await weatherService.getLocationKey(cityName);
+      Map<String, dynamic> weather =
+          await weatherService.getWeatherData(locationKey);
+      Map<String, dynamic>? airQuality =
+          await weatherService.getAirQuality(locationKey);
+      setState(() {
+        weatherData = weather;
+        airQualityData = airQuality;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +86,12 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                Text('10:30 AM',
+                Text('${TimeOfDay.now().format(context)}',
                     style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.w200)),
-                Text('Wednesday 11.09.24',
+                Text('${DateTime.now().toString().split(' ')[0]}',
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 15,
@@ -102,13 +135,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Column(
                                 children: [
                                   const SizedBox(height: 25),
-                                  Text(
-                                    "25°",
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.black,
-                                      fontSize: 55,
-                                      fontWeight: FontWeight.w200,
-                                    ),
+                                  Row(
+                                    children: [
+                                      //Text(today),
+                                      Text(
+                                        "${weatherData!['Temperature']['Metric']['Value']}°",
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.black,
+                                          fontSize: 55,
+                                          fontWeight: FontWeight.w200,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   Row(
                                     children: [
@@ -278,7 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          'HUMIDITY WITH IMAGE',
+                          '${weatherData!['RelativeHumidity']}%',
                           style: GoogleFonts.raleway(
                             color: Colors.white,
                             fontSize: 20,
@@ -298,7 +336,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          'WIND WITH IMAGE',
+                          '${weatherData!['Wind']['Speed']['Metric']['Value']} km/h',
                           style: GoogleFonts.raleway(
                             color: Colors.white,
                             fontSize: 20,
@@ -324,7 +362,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Center(
-                        child: Text('AIR QUALITY WITH IMAGE',
+                        child: Text(
+                            'AIR QUALITY INDEX : ${airQualityData != null ? airQualityData!['AQI'] : 'N/A'}',
                             style: GoogleFonts.raleway(
                               color: Colors.white,
                               fontSize: 20,
