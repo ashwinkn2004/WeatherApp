@@ -316,7 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          '${weatherData!['RelativeHumidity']}%',
+                          'HUMIDITY : ${weatherData!['RelativeHumidity']}%',
                           style: GoogleFonts.raleway(
                             color: Colors.white,
                             fontSize: 20,
@@ -336,7 +336,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          '${weatherData!['Wind']['Speed']['Metric']['Value']} km/h',
+                          'WIND : ${weatherData!['Wind']['Speed']['Metric']['Value']} km/h',
                           style: GoogleFonts.raleway(
                             color: Colors.white,
                             fontSize: 20,
