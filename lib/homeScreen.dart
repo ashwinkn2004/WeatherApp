@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:weather_v2/services/weather_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,7 +11,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //UI VALUES
   String cityName = 'PATHANAMTHITTA';
+  String todayName = DateFormat("EEEE").format(DateTime.now());
+  String todayDate = DateFormat("dd-MM-yyyy").format(DateTime.now());
+
+
   final WeatherService weatherService = WeatherService();
   Map<String, dynamic>? weatherData;
   Map<String, dynamic>? airQualityData;
@@ -86,16 +92,34 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 30),
+                //time
                 Text('${TimeOfDay.now().format(context)}',
                     style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.w200)),
-                Text('${DateTime.now().toString().split(' ')[0]}',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 15,
-                    )),
+                //date
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("$todayName",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 15,
+                        )),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('$todayDate',
+                        //{DateTime.now().toString().split(' ')[0]}
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 15,
+                        )),
+                  ],
+                ),
+
                 const Padding(
                   padding: EdgeInsets.fromLTRB(100, 50, 100, 30),
                   child: Image(image: AssetImage('assets/sunny.png')),
